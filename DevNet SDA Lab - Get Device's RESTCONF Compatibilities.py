@@ -19,16 +19,37 @@ import json
 # RESTCONF Port: 443 (HTTPS)
 # Username: developer
 # Password: C1sco12345
-url = "https://sandbox-iosxe-latest-1.cisco.com:443/restconf/data/ietf-yang-library:modules-state"
+# --> NOT UDES HERE
+#
+#
+
+# OR
+# 
+# # 
+# CISCO SandBox Lab "IOS XE on CSR Latest Code" :
+# https://devnetsandbox.cisco.com/RM/Diagram/Index/f864352b-f562-44b1-ad24-5f01aa34cfa1
+# First reserve the Lab then connect to Lab's VPN then :
+# I used this lab : 
+url = "https://10.10.20.48:443/restconf/data/ietf-yang-library:modules-state"
 
 payload={}
 headers = {
   'Content-Type': 'application/yang-data+json',
   'Accept': 'application/yang-data+json',
   'Authorization': 'Basic ZGV2ZWxvcGVyOkMxc2NvMTIzNDU='
-}
+} 
 
-response = requests.request("GET", url, headers=headers, data=payload)
+
+
+# verify=False
+# Ignore SSL Certificate verification 
+# If is not used 
+# response = requests.request("GET", url, headers=headers, data=payload)
+#       SSLError: HTTPSConnectionPool(host='10.10.20.48', port=443):
+#       Max retries exceeded with url: /restconf/data/ietf-yang-library:modules-state
+#       (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED]
+#       certificate verify failed: self signed certificate (_ssl.c:1123)')))
+response = requests.request("GET", url, headers=headers, data=payload, verify=False)
 
 print(response.text)
 copyToFile = open("DevNet SDA Lab - Get Device's RESTCONF Compatibilities.txt", "w")
@@ -62,7 +83,7 @@ headers = {
   'Authorization': 'Basic ZGV2ZWxvcGVyOkMxc2NvMTIzNDU='
 }
 
-response = requests.request("GET", url, headers=headers, data=payload)
+response = requests.request("GET", url, headers=headers, data=payload, verify=False)
 
 print(response.text)
 copyToFile = open("DevNet SDA Lab - Get HSRP Status.txt", "w")
