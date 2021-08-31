@@ -20,21 +20,21 @@ import json
 # 
 # # 
 # CISCO SandBox Lab "IOS XE on CSR Latest Code" :
-# https://devnetsandbox.cisco.com/RM/Diagram/Index/f864352b-f562-44b1-ad24-5f01aa34cfa1
+# https://devnetsandbox.cisco.com/RM/Diagram/Index/f2e2c0ad-844f-4a73-8085-00b5b28347a1?diagramType=Topology
 # First reserve the Lab then connect to Lab's VPN then :
 # I used this lab : 
 url = "https://10.10.20.48:443/restconf/data/ietf-interfaces:interfaces"
 
 payload = json.dumps({
   "ietf-interfaces:interface": {
-    "name": "Loopback100",
+    "name": "Loopback103",
     "description": "Configured by RESTCONF - SDA ",
     "type": "iana-if-type:softwareLoopback",
     "enabled": True,
     "ietf-ip:ipv4": {
       "address": [
         {
-          "ip": "169.254.254.1",
+          "ip": "169.254.254.103",
           "netmask": "255.255.255.255"
         }
       ]
