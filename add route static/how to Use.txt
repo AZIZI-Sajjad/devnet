@@ -1,0 +1,11 @@
+Referance : 
+https://github.com/ArRosid/netconf-static-route
+
+Install the libraries listed in the requirements
+Configure IP Address Management in the router
+Configure IP Address on all of the router interfaces. Please refer to https://github.com/arrosid/netconf-ip-address.
+Activate NETCONF and YANG in the router using these commands
+netconf ssh
+netconf-yang
+Edit the inventory.yml to adjust to your topology
+Run the script using the command python3 configure_static_route.py
