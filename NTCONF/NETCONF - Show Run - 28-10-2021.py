@@ -64,6 +64,10 @@ netconf_reply_xml = xml.dom.minidom.parseString(netconf_reply.xml).toprettyxml()
 print(netconf_reply_xml)
 print('*' * 25)
 
+# Print out the raw Dict that returned
+#netconf_reply_dict = xmltodict.parse(netconf_reply_xml)
+#print(netconf_reply_dict)
+
 
 print('*' * 100)
 print(netconf_reply_xml)
