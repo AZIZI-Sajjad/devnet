@@ -1,0 +1,8 @@
+# RESTCONF Resquest 3 / Show Ruuning-configuration
+#  -> LINUX / jason
+curl -vk \
+-u developer:C1sco12345 \
+-H "accept: application/yang-data+xml" \
+https://sandbox-iosxe-latest-1.cisco.com/restconf/data/Cisco-IOS-XE-native:native
+#  -> WINDOWS / jason
+curl -vk -u developer:C1sco12345 -H "accept: application/yang-data+json" https://sandbox-iosxe-latest-1.cisco.com/restconf/data/Cisco-IOS-XE-native:native
