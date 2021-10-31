@@ -1,0 +1,8 @@
+RESTCONF Resquest / Show ALL Interfaces config
+  -> LINUX jason
+curl -vk \
+-u devnet:devnet \
+-H "accept: application/yang-data+json" \
+https://sandbox-iosxe-latest-1.cisco.com/restconf/data/ietf-interfaces:interfaces
+  -> WINDOWS / jason
+curl -vk -u developer:C1sco12345 -H "accept: application/yang-data+json"  https://sandbox-iosxe-latest-1.cisco.com/restconf/data/ietf-interfaces:interfaces
