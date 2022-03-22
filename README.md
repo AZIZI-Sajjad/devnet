@@ -1,2 +1,2 @@
 # README
-## Devnet DISCO
+## Devnet CISCO
