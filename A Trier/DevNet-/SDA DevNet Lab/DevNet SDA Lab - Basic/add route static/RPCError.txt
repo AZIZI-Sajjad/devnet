@@ -1,0 +1,16 @@
+
+Traceback (most recent call last):
+
+  File "D:\CODE\DevNet\get_interface_list.py", line 66, in <module>
+    netconf_reply = m.get_config(source ='running',filter = netconf_filter)
+
+  File "D:\Software\Anaconda3\lib\site-packages\ncclient\manager.py", line 246, in execute
+    return cls(self._session,
+
+  File "D:\Software\Anaconda3\lib\site-packages\ncclient\operations\retrieve.py", line 166, in request
+    return self._request(node)
+
+  File "D:\Software\Anaconda3\lib\site-packages\ncclient\operations\rpc.py", line 375, in _request
+    raise self._reply.error
+
+RPCError: {'type': 'protocol', 'tag': 'unknown-element', 'app_tag': None, 'severity': 'error', 'info': '<?xml version="1.0" encoding="UTF-8"?><error-info xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0"><bad-element>filter</bad-element>\n</error-info>\n', 'path': '\n    /rpc/get-config\n  ', 'message': None}

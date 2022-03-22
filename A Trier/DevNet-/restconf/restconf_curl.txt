@@ -1,0 +1,20 @@
+**********************         LINUX / jason            ********************************
+curl -vk \
+-u devnet:devnet \
+-H "accept: application/yang-data+json" \
+https://ios-xe-mgmt.cisco.com:9443/restconf/data/ietf-interfaces:interfaces/
+**********************         WINDOWS / jason            ******************************
+curl -vk -u developer:C1sco12345 -H "accept: application/yang-data+json" https://ios-xe-mgmt.cisco.com:9443/restconf/data/ietf-interfaces:interfaces/
+###########################################################################################
+
+**********************         LINUX / xml            ********************************
+curl -vk \
+-u devnet:devnet \
+-H "accept: application/yang-data+xml" \
+**********************         WINDOWS / xml            ******************************
+https://ios-xe-mgmt.cisco.com:9443/restconf/data/ietf-interfaces:interfaces/
+curl -vk -u developer:C1sco12345 -H "accept: application/yang-data+xml" https://ios-xe-mgmt.cisco.com:9443/restconf/data/ietf-interfaces:interfaces/
+************************************************************************************
+
+
+

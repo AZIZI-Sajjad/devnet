@@ -1,0 +1,5 @@
+CORE:
+  - host: sandbox-iosxe-latest-1.cisco.com
+    static_route:
+      - destination_prefix: 169.254.200./24
+        next_hop_address: 10.10.20.1
