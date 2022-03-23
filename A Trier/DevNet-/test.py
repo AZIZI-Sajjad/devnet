@@ -97,5 +97,5 @@ for interface in interfaces:
             newIntNamePRTG = ("{} - {}".format(prtgInterface, interface['description']))
             print(newIntNamePRTG)
             prtgInterface =  newIntNamePRTG  
-            # Ajouter l'API de PRTG pour renommer l'interface de l'équipement SOPHOS 
+            # Ajouter l'API de PRTG pour renommer l'interface de l'équipement SOPHOS !
             #print("SOPHOS Interfaces WEB {}, DESCRIPTION {} is in SNMP Interfaces lite : {}".format(interface["name"], interface['description'], prtgInterface))
