@@ -93,6 +93,6 @@ for interface in interfaces:
     print("Interface {} enabled status is {}".format(
             interface["name"],
             interface["enabled"]
-            )
+            ) 
         )
 print("\n")
