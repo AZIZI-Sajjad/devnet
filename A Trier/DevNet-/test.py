@@ -56,7 +56,7 @@ netconf_filter = """
 #print("Opening NETCONF Connection to {}".format(env_lab.IOS_XE_1["host"]))
 
 
-# Open a connection to the network device using ncclient.
+# Open a connection to the network device using ncclient..
 m = manager.connect(host='sandbox-iosxe-latest-1.cisco.com', port=830, username='developer',
                     password='C1sco12345', hostkey_verify=False)
 
