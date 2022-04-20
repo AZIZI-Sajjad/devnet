@@ -43,7 +43,7 @@ headers = {
 
 # verify=False
 # Ignore SSL Certificate verification 
-# If is not used 
+# If is not used :
 # response = requests.request("GET", url, headers=headers, data=payload)
 #       SSLError: HTTPSConnectionPool(host='10.10.20.48', port=443):
 #       Max retries exceeded with url: /restconf/data/ietf-yang-library:modules-state
