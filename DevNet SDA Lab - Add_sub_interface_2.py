@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 26 00:27:28 2021
-
-@author: SDA
-"""
-
 
 """This script retrieves the list of interfaces from a device using NETCONF
 Copyright (c) 2018 Cisco and/or its affiliates.
@@ -42,43 +35,77 @@ project_root = os.path.abspath(os.path.join(here, "../.."))
 
 # Extend the system path to include the project root and import the env files
 sys.path.insert(0, project_root)
+import env_lab  # noqa
+
+# Create an XML filter for targeted NETCONF queries
+netconfig_xml = """
+<config>
+    <interfaces xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+        <interface>
+            <name>GigabitEthernet3.10</name>
+            <enabled>true</enabled>
+            <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
+                <address>
+                    <ip>169.254.100.1</ip>
+                    <netmask>255.255.255.0</netmask>
+                </address>
+            </ipv4>
+            <GigabitEthernet>
+                <name>3.100</name>
+                <encapsulation>
+                    <dot1Q>
+                        <vlan-id>100</vlan-id>
+                    </dot1Q>
+                </encapsulation>
+                <ip>
+                    <address>
+                        <primary>
+                            <address>169.254.100.1</address>
+                            <mask>255.255.255.0</mask>
+                        </primary>
+                    </address>
+                </ip>
+                <logging>
+                    <event>
+                        <link-status/>
+                    </event>
+                </logging>
+            </GigabitEthernet>
+        </interface>
+    </interfaces>
+</config>
+"""
 
 #print("Opening NETCONF Connection to {}".format(env_lab.IOS_XE_1["host"]))
 
+print("IP:{}".format(env_lab.IOS_XE_1["host"]))
+print("netconf_port:{}".format(env_lab.IOS_XE_1["netconf_port"]))
+print("username:{}".format(env_lab.IOS_XE_1["username"]))
+print("password:{}".format(env_lab.IOS_XE_1["password"]))
 
 # Open a connection to the network device using ncclient
-m = manager.connect(host='sandbox-iosxe-latest-1.cisco.com', port=830, username='developer',
-                    password='C1sco12345', hostkey_verify=False)
+with manager.connect(
+        host=env_lab.IOS_XE_1["host"],
+        port=env_lab.IOS_XE_1["netconf_port"],
+        username=env_lab.IOS_XE_1["username"],
+        password=env_lab.IOS_XE_1["password"],
+        hostkey_verify=False
+        ) as m:
 
-print("Sending a <get-config> operation to the device.\n")
+    print("Sending a <get-config> operation to the device.\n")
     # Make a NETCONF <get-config> query using the filter
-netconf_reply = m.get_config(source ='running')
+    netconf_reply = m.edit_config(netconfig_xml, target ='running')
 
 print("Here is the raw XML data returned from the device.\n")
-netconf_reply_xml = xml.dom.minidom.parseString(netconf_reply.xml).toprettyxml()
 # Print out the raw XML that returned
-print(netconf_reply_xml)
-print('*' * 25)
+print(xml.dom.minidom.parseString(netconf_reply.xml).toprettyxml())
+print("")
 
-
-# Print out the raw Dict that returned
-#netconf_reply_dict = xmltodict.parse(netconf_reply_xml)
-#print(netconf_reply_dict)
-
-print('*' * 100)
-print(netconf_reply_xml)
-copyToFile = open("DevNet SDA Lab - Get Device's NETCONF - Show Running-Configuration.xml", "w")
-copyToFile.write(netconf_reply_xml)
-print('*' * 25)
-m.close_session()
-print('Session NETCONF Closed Successfully...')
-
-"""
 # Parse the returned XML to an Ordered Dictionary
 netconf_data = xmltodict.parse(netconf_reply.xml)["rpc-reply"]["data"]
 
 # Create a list of interfaces
-#interfaces = netconf_data["interfaces"]["interface"]
+interfaces = netconf_data["interfaces"]["interface"]
 
 print("The interface status of the device is: ")
 # Loop over interfaces and report status
@@ -88,4 +115,4 @@ for interface in interfaces:
             interface["enabled"]
             )
         )
-print("\n")"""
+print("\n")

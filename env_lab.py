@@ -29,6 +29,7 @@ SOFTWARE.
 
 # User Input
 
+
 # Please select the lab environment that you will be using today
 #     sandbox - Cisco DevNet Always-On / Reserved Sandboxes
 #     express - Cisco DevNet Express Lab Backend
@@ -55,12 +56,12 @@ if ENVIRONMENT_IN_USE == "sandbox":
 
     # Values for the Always On IOS XE Sandbox
     IOS_XE_1 = {
-        "host": "ios-xe-mgmt.cisco.com",
+        "host": "sandbox-iosxe-latest-1.cisco.com",
         "username": "developer",
         "password": "C1sco12345",
-        "netconf_port": 10000,
-        "restconf_port": 9443,
-        "ssh_port": 8181
+        "netconf_port": 830,
+        "restconf_port": 443,
+        "ssh_port": 22
     }
 
     # Values for the Reservable IOS XE Sandbox
