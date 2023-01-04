@@ -1,0 +1,11 @@
+---
+# tasks file for devicebackup
+- name: récup de la configuration du switch (untel)
+  net-command: 
+    command: show running-config
+  register: config
+
+- name: enregistrement de la configuration dans un fichier
+  copy:
+    content: "{{ config.stdout }}"
+    dest: /var/www/lgoubier/devicebackup/switch/files

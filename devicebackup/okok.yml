@@ -1,0 +1,21 @@
+---
+
+- name: testssh
+  hosts: all
+  tasks: 
+  block:
+    - name: connection ssh
+      command: ssh user@10.1.254.251   
+
+    - name: passer en mode enable à la connection ssh
+      cisco.ios.ios_command:
+        command: enable
+
+    - name: show run
+      cisco.ios.ios_command:  
+        command: show run
+      register: result
+
+    - name: Afficher le résultat dans le terminal windows
+      debug:
+        var: result
