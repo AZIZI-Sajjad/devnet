@@ -53,7 +53,7 @@ print("netconf_port:{}".format(env_lab.IOS_XE_1["netconf_port"]))
 print("username:{}".format(env_lab.IOS_XE_1["username"]))
 print("password:{}".format(env_lab.IOS_XE_1["password"]))
 
-# Open a connection to the network device using ncclient
+# Open a connection to the network device using ncclient::
 with manager.connect(
         host=env_lab.IOS_XE_1["host"],
         port=env_lab.IOS_XE_1["netconf_port"],
