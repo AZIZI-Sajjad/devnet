@@ -52,44 +52,46 @@ IETF_INTERFACE_TYPES = {
 
 # Create an XML configuration template for ietf-interfaces
 netconf_interface_template = """
-<config>
-    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-        <interface>
-				<name>{name}</name>
-                <description>{desc}</description>
-				<type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
-				<enabled>{status}</enabled>
-				<ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">
-					<address>
-						<ip>{ip_address}</ip>
-						<netmask>{mask}</netmask>
-					</address>
-				</ipv4>
-			</interface>
-    </interfaces>
-</config>"""
+<config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <interface>
+      <GigabitEthernet>
+        <name>3</name>
+        <description>This is my new GigabitEthernet description!</description>
+        <enabled>true</enabled>
+            <ipv4>
+                <address>
+                    <ip>169.254.136.254</ip>
+                    <netmask>255.255.255.252</netmask>
+                </address>
+            </ipv4>
+      </GigabitEthernet>
+    </interface>
+  </native>
+</config>
+"""
 
 # Ask for the Interface Details to Add 
-new_subinterface = {}
-new_subinterface["name"] = "GigabitEthernet" + input("What subinterface number to add? ")
-new_subinterface["desc"] = input("What description to use? ")
-new_subinterface["type"] = IETF_INTERFACE_TYPES["subinterface"]
-new_subinterface["status"] = "true"
-new_subinterface["ip_address"] = input("What IP address? ")
-new_subinterface["mask"] = input("What network mask? ")
+# new_subinterface = {}
+# new_subinterface["name"] = "GigabitEthernet" + input("What subinterface number to add? ")
+# new_subinterface["desc"] = input("What description to use? ")
+# new_subinterface["type"] = IETF_INTERFACE_TYPES["subinterface"]
+# new_subinterface["status"] = "true"
+# new_subinterface["ip_address"] = input("What IP address? ")
+# new_subinterface["mask"] = input("What network mask? ")
 
 # Create the NETCONF data payload for this interface2.222
-netconf_data = netconf_interface_template.format(
-        name = new_subinterface["name"],
-        desc = new_subinterface["desc"],
-        type = new_subinterface["type"],
-        status = new_subinterface["status"],
-        ip_address = new_subinterface["ip_address"],
-        mask = new_subinterface["mask"]
-    )
+# netconf_data = netconf_interface_template.format(
+#         name = new_subinterface["name"],
+#         desc = new_subinterface["desc"],
+#         type = new_subinterface["type"],
+#         status = new_subinterface["status"],
+#         ip_address = new_subinterface["ip_address"],
+#         mask = new_subinterface["mask"]
+#     )
 
 print("The configuration payload to be sent over NETCONF.\n")
-print(netconf_data)
+# print(netconf_data)
 
 print("Opening NETCONF Connection to {}".format(env_lab.IOS_XE_2["host"]))
 
@@ -104,7 +106,7 @@ with manager.connect(
 
     print("Sending a <edit-config> operation to the device.\n")
     # Make a NETCONF <get-config> query using the filter
-    netconf_reply = m.edit_config(netconf_data, target = 'running')
+    netconf_reply = m.edit_config(netconf_interface_template, target = 'running')
 
 print("Here is the raw XML data returned from the device.\n")
 # Print out the raw XML that returned

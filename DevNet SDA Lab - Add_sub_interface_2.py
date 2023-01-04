@@ -39,8 +39,8 @@ import env_lab  # noqa
 
 # Create an XML filter for targeted NETCONF queries
 netconfig_xml = """
-<config>
-    <interfaces xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+<config  xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <interfaces>
         <interface>
             <name>GigabitEthernet3.10</name>
             <enabled>true</enabled>
