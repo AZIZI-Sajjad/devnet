@@ -9,6 +9,7 @@ ansible_network_os=cisco.ios.ios
 ansible_become=yes
 ansible_become_method=enable
 ansible_become_password="C1sco12345"
+host_key_checking=False
 
 ; [all]
 ; ansible_connection=ssh

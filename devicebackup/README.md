@@ -96,5 +96,21 @@ Travail sur le test.yml avec le role test.
 
 
 
+--------------------------------
+## *Problème de FingerPrint SSH du module *
 
+## *ansible.netcommon.network_cli*
+
+    TASK [ansible-cisco-playbook : Replaces device configuration of listed interfaces with provided configuration] *****************************************************************
+    fatal: [sandbox-iosxe-latest-1.cisco.com]: FAILED! => {"changed": false, "msg": "paramiko: The authenticity of host 'sandbox-iosxe-latest-1.cisco.com' can't be established.\nThe ssh-rsa key fingerprint is b'c183a01b4d7fe463e003851a107895aa'."}
+
+    PLAY RECAP *********************************************************************************************************************************************
+
+Solution : 
+Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBook (dans cet exemple devicebackp/test.yml) et y ajouter : 
+
+    [defaults]
+    host_key_checking = False
+
+--------------------------------
 
