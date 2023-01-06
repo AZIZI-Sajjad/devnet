@@ -1,3 +1,24 @@
+
+
+#### Comment utilsier le PlayBook:
+
+     1- Cloner le projet
+
+     2- Modifier le ficiher devicebackup/hosts et y ajouter les IP / FQDN et les identifiants des équipements
+
+     3- Aller en SSH dans le dossier devicebackup
+
+     4- Lancer la commande suivante :
+
+     ansible-playbook -i hosts-cisco ansible-cisco.yml 
+
+## Références:
+
+    --> cisco.ios.ios_interfaces:
+    https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_interfaces_module.html
+
+
+
 # Objectif: 
 
 1- Automatiser la sauvegarde des routeurs et des switchs du DC
