@@ -1,10 +1,10 @@
 ---
-- name: Run a command
+- name: Run a command on MikroTik
   community.routeros.command:
     commands:
       - /system resource print
   register: system_resource_print
 
-- name: Print its output
+- name: Print output ( Run a command on MikroTik )
   ansible.builtin.debug:
     var: system_resource_print.stdout_lines
