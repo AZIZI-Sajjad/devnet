@@ -141,3 +141,16 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
 
         fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
+
+- Créer un role test pour effectuer des tests 
+
+- Test de la librérie : 
+
+    community.routeros.routeros
+
+    Réf: https://github.com/ansible-collections/community.routeros
+
+    -> le problème de TimeOut ça ne vient pas des identifiants, car lorsque je mets des mouvais identifiants j'ai le message:
+
+        fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "Failed to authenticate: Authentication failed."}
+    

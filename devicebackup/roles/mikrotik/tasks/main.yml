@@ -21,6 +21,18 @@
 
 
 
+- name: fetch configuration from Mikrotik device
+  ios_command:
+    commands:
+      - export
+    # provider: "{{ login_provider }}"
+  register: config
+- name: save configuration to file
+  copy:
+    content: "{{ config.config }}"
+    dest: ../backup/backup.txt
+
+
 
 - name: run export command on Mikrotik device
   ios_command:
