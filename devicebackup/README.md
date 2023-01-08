@@ -163,7 +163,7 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
     
 
 
-    Solution du message Time Out: 
+##     Solution du message Time Out:  => EN COURS 
 
         fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
 
