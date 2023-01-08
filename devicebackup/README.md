@@ -142,6 +142,11 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
         fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
 
+
+--------------------------------
+
+08/01/2023
+
 - Créer un role test pour effectuer des tests 
 
 - Test de la librérie : 
