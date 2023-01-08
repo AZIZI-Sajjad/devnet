@@ -17,40 +17,40 @@ host_key_checking=False
 192.168.4.254
 
 [mikrotik:vars]
-ansible_user=sdmik
-ansible_ssh_pass="P@ssw0rdM!K31"
 ansible_connection=ansible.netcommon.network_cli
-ansible_network_os=cisco.ios.ios
-ansible_become=yes
-; ansible_become_method=enable
-; ansible_become_password="password"
-host_key_checking=False
-
-
-[routersMikrotik]
-router ansible_host=192.168.4.254
-
-
-[routersMikrotik:vars]
-ansible_connection=ansible.netcommon.network_cli
-ansible_network_os= routeros #community.routeros.routeros
-
-ansible_user=sdmik
-ansible_ssh_pass="P@ssw0rdM!K31"
+ansible_network_os=community.routeros.routeros
+ansible_user=admin
+; ansible_user=admin+cet1024w
+ansible_ssh_pass=password
 ansible_become=yes
 host_key_checking=False
 
+
+
+
+
+########################  Brouillons: 
+; [routersMikrotik]
+; router ansible_host=192.168.4.254
 
 
 ; [routersMikrotik:vars]
-; ansible_user=sdmik+cet1024w
-; ; ansible_user=sdmik
-; ansible_ssh_pass=P@ssw0rdM!K31
+; ansible_connection=ansible.netcommon.network_cli
+; ansible_network_os= routeros #community.routeros.routeros
+; ansible_user=admin
+; ansible_ssh_pass=password
+; ansible_become=yes
+; host_key_checking=False
+
+; [routersMikrotik:vars]
+; ansible_user=admin+cet1024w
+; ; ansible_user=admin
+; ansible_ssh_pass=password
 ; ansible_connection=ansible.netcommon.network_cli
 ; ansible_network_os=community.network.routeros
 ; ansible_become=yes
 ; ansible_become_method=enable
-; ansible_become_password=P@ssw0rdM!K31
+; ansible_become_password=password
 ; ansible_ssh_common_args='-o ProxyCommand="ssh -W %h:%p -q bastion01"'
 
 

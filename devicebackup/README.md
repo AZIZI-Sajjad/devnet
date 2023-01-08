@@ -163,7 +163,7 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
     
 
 
-##     Solution du message Time Out:  => EN COURS 
+##     Solution du message Time Out:  =>
 
         fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
 
@@ -177,6 +177,23 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
        Réf: https://wiki.mikrotik.com/wiki/Manual:Console_login_process#Console_login_options
 
+       Réf:  https://jcutrer.com/howto/networking/mikrotik/mikrotik-backup-and-restore
 
-.
+
+- ## -> *PlayBook MikroTik est opérationnel*
+
+--------------------------------
+
+# 09/01/2023
+
+## À Faire: 
+
+    PlayBook MikroTik: 
+        
+    Lorsqu'on envoie la commande "/ip address print"
+    il y a le messaeg d'erreur : 
+
+
+    fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
+
 

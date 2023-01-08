@@ -19,37 +19,85 @@
 # 4- Lancer la commande suivante :
 # ansible-playbook -i hosts-cisco test.yml
 
-
-
-- name: fetch configuration from Mikrotik device
-  ios_command:
+- name: system resource print MikroTik
+  community.routeros.command:
     commands:
-      - export
-    # provider: "{{ login_provider }}"
-  register: config
-- name: save configuration to file
-  copy:
-    content: "{{ config.config }}"
-    dest: ../backup/backup.txt
-
-
-
-- name: run export command on Mikrotik device
-  ios_command:
-    commands: export
-    # provider: "{{ login_provider }}"
+      - /system resource print
+      # - system resource print
   register: output
 
-- name: save output to file
-  copy:
-    content: "{{ output.stdout }}"
-    dest: /path/to/backup.rsc
+- name: system resource print MikroTik output
+  debug:
+    msg: "{{ output }}"
 
 
-# - name: fetch configuration from Mikrotik device
-#   ios_config:
-#     provider: "{{ login_provider }}"
-#   register: config
+
+
+- name: interface print on MikroTik
+  community.routeros.command:
+    commands:
+      - /interface print
+      # - interface print
+  register: output
+
+- name: interface print MikroTik output
+  debug:
+    msg: "{{ output }}"
+
+
+
+
+- name: ip route print on MikroTik
+  community.routeros.command:
+    commands:
+      - /ip route print
+      # - ip route print 
+      # - /ip route print brief
+      # - ip route print brief
+  register: output
+
+- name: ip route print MikroTik output
+  debug:
+    msg: "{{ output }}"
+
+
+
+
+- name: export on MikroTik
+  community.routeros.command:
+    commands:
+      - export
+      # - export
+      # - /export file=myconfig.cfg
+      # - export file=myconfig.cfg
+  register: output
+
+- name: export MikroTik output
+  debug:
+    msg: "{{ output }}"
+
+
+
+
+# - name: ip address print on MikroTik
+#   community.routeros.command:
+#     commands:
+#       - /ip address print brief
+#       # - ip address print brief
+#   register: output
+
+# - name: ip address print MikroTik output
+#   debug:
+#     msg: "{{ output }}"
+
+
+
+
+########################  Brouillons: 
+# - name: Print output ( Run a command on MikroTik )
+#   ansible.builtin.debug:
+#     var: system_resource_print.stdout_lines
+
 
 # - name: save configuration to file
 #   copy:

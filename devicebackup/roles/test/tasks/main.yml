@@ -1,11 +1,40 @@
 ---
-- name: Run a command on MikroTik
+- name: system resource print MikroTik
   community.routeros.command:
     commands:
-      - :execute {/ip address print;}
-      # - /system resource print
-  register: system_resource_print
+      - /system resource print
+  register: output
 
-- name: Print output ( Run a command on MikroTik )
-  ansible.builtin.debug:
-    var: system_resource_print.stdout_lines
+- name: system resource print MikroTik output
+  debug:
+    msg: "{{ output }}"
+
+
+- name: ip route print on MikroTik
+  community.routeros.command:
+    commands:
+      - /ip route print brief
+  register: output
+
+- name: ip route print MikroTik output
+  debug:
+    msg: "{{ output }}"
+
+
+
+- name: export on MikroTik
+  community.routeros.command:
+    commands:
+      - export
+      # - export file=myconfig.cfg
+  register: output
+
+- name: export MikroTik output
+  debug:
+    msg: "{{ output }}"
+
+
+########################  Brouillons: 
+# - name: Print output ( Run a command on MikroTik )
+#   ansible.builtin.debug:
+#     var: system_resource_print.stdout_lines
