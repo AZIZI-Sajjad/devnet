@@ -2,7 +2,8 @@
 - name: Run a command on MikroTik
   community.routeros.command:
     commands:
-      - /system resource print
+      - :execute {/ip address print;}
+      # - /system resource print
   register: system_resource_print
 
 - name: Print output ( Run a command on MikroTik )

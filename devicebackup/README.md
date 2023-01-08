@@ -161,3 +161,20 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
         fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "Failed to authenticate: Authentication failed."}
     
+
+
+    Solution du message Time Out: 
+
+        fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
+
+
+    -> Activer le mode BUMB sur le rtouteur OS Mikrotik: 
+       En se connectant en SSH à CLI du routeur : 
+
+       Réf: https://help.mikrotik.com/docs/display/ROS/Command+Line+Interface
+
+       Réf: https://wiki.mikrotik.com/wiki/Manual:Console_login_process#Console_login_options
+
+
+.
+
