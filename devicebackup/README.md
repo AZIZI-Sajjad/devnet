@@ -149,6 +149,8 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
     community.routeros.routeros
 
     Réf: https://github.com/ansible-collections/community.routeros
+    
+    Réf: https://help.mikrotik.com/docs/display/ROS/Command+Line+Interface
 
     -> le problème de TimeOut ça ne vient pas des identifiants, car lorsque je mets des mouvais identifiants j'ai le message:
 
