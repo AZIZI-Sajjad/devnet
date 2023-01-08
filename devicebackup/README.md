@@ -171,6 +171,8 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
     -> Activer le mode BUMB sur le rtouteur OS Mikrotik: 
        En se connectant en SSH à CLI du routeur : 
 
+       Réf: https://docs.ansible.com/ansible/latest/network/user_guide/platform_routeros.html
+
        Réf: https://help.mikrotik.com/docs/display/ROS/Command+Line+Interface
 
        Réf: https://wiki.mikrotik.com/wiki/Manual:Console_login_process#Console_login_options
