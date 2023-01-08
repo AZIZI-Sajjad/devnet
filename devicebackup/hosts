@@ -11,6 +11,24 @@ ansible_become_method=enable
 ansible_become_password="C1sco12345"
 host_key_checking=False
 
+
+
+[mikrotik]
+192.168.4.254
+
+[mikrotik:vars]
+ansible_user=sdmik
+ansible_ssh_pass="P@ssw0rdM!K31"
+ansible_connection=ansible.netcommon.network_cli
+ansible_network_os=cisco.ios.ios
+ansible_become=yes
+ansible_become_method=enable
+ansible_become_password="P@ssw0rdM!K31"
+host_key_checking=False
+
+
+
+
 ; [all]
 ; ansible_connection=ssh
 ; ansible_ssh_extra_args='-o PreferredAuthentications=password -o PasswordAuthentication=yes -o "StrictHostKeyChecking no" -o IdentitiesOnly=yes' 
