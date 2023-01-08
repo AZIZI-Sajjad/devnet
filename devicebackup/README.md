@@ -135,3 +135,9 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
 --------------------------------
 
+07/01/2023
+- Création du rôle "mikrotik": OK
+- Message d'erreur : 
+
+
+        fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
