@@ -19,4 +19,4 @@
 #ansible_become_pass: "{{ default_become_pass }}"
 
   roles:
-    - role: ansible-cisco-playbook
+    - role: cisco
