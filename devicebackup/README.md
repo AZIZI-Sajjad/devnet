@@ -230,10 +230,13 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
 PlayBook MikroTik: 
     
-Lorsqu'on envoie la commande "/ip" address print"
-il y a le messaeg d'erreur : 
+## 1- Lorsqu'on envoie la commande "/ip" address print"
+    il y a le messaeg d'erreur : 
 
 
     fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
 
+## 2- Lorsqu'on sauvegarde MikroTik le résltat est en format brut, c'est à dire sans ENTREE avec des "\\n"  
 
+
+## 3- Cacher les identifiants de MikroTik 
