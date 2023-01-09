@@ -222,11 +222,7 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
 --------------------------------
 
-# 10/01/2023
-
-
-
-## À Faire: 
+# 10/01/2023 À Faire: 
 
 PlayBook MikroTik: 
     
