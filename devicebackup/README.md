@@ -230,13 +230,35 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
 PlayBook MikroTik: 
     
-## 1- Lorsqu'on envoie la commande "/ip" address print"
+### 1- Lorsqu'on envoie la commande "/ip" address print"
     il y a le messaeg d'erreur : 
 
 
     fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
 
-## 2- Lorsqu'on sauvegarde MikroTik le résltat est en format brut, c'est à dire sans ENTREE avec des "\\n"  
+### 2- Lorsqu'on sauvegarde MikroTik le résltat est en format brut, c'est à dire sans ENTREE avec des "\\n"  
         Réf: https://www.cloudbees.com/blog/ansible-lineinfile-9-ways-to-use-it-to-improve-your-playbooks
 
-## 3- Cacher les identifiants de MikroTik 
+### 3- Cacher les identifiants de MikroTik 
+
+### 4- Etant donné que le fichier de sauvegarde de MikroTik contient des MOT DE PASSE 
+        À voir quelle solution est faisable et plus sécurisé 
+
+        1- Il va falloir chiffrer le fichier avec un MDP 
+
+        2- Utiliser d'autres commandes ou moyen pour sauvegarder MikroTik, un moyen de ne pas stocker les MDP dans le fichier de config
+
+### 5-  Comment restaurer la config sur MikroTik 
+
+### 6-  Comment restaurer la config sur CISCO 
+
+### 7- Faire une tâche planifier lancer la sauvegarde autoatiquement
+
+### 8- Comment envoyer les sauvegardes vers un FTP et Lire les sauvegardes en cas de Besoin 
+
+
+### 9- Comment versionner les sauvegardes 
+
+### 10- Comparer la config actulle '{Dernière sauvegarde}' avec les anciennes
+
+
