@@ -186,12 +186,52 @@ Créer un fichier *ansible.cfg* à la racine où se trouve le fichier de PlayBoo
 
 # 09/01/2023
 
+### Faits: 
+-   Activer gather_facts: Afin de récupérer l'heure du serveur Ansible pour pouvoir l'ajouter à la fin du nom des fichiers de backup
+
+        Réf: https://www.unixarena.com/2019/05/using-date-and-timestamp-variable-in-ansible-playbook.html/
+
+        gather_facts: yes
+        dest: ./roles/mikrotik/backups/config.{{ ansible_date_time.iso8601 }}.txt
+
+        Exemple:
+        "iso8601": "2019-03-11T09:19:33Z",
+
+-   Ajouter l'heure à la fin des fichiers de sauvegardes de CISCO & Mikrotik  .{{ ansible_date_time.iso8601 }}
+
+
+- Récupérer l'IP de l'équipement à l'aide de gather_facts et sa variable {{ inventory_hostname }}
+
+        Pour les équipements CISCO la librérie "backup" du module "cisco.ios.ios" récupère running-config et le sauvegarde avec IP_TimeStemp dans le dossier "backup"
+
+- Récupérer le chemin du Playbook afin d'écourter le chemin absolut : 
+    
+        Nom de la varibale système du réperoire du PlayBook: 
+        
+        {{ playbook_dir }}
+        
+        
+        Par exemple dans le PlayBook "ansible-playbook.yml" dans le fichier mail.yml du role MikroTik, le chemin du fichier de sauvegarde est déifini de cette manière: 
+
+        Chemin : 
+
+        "{{ playbook_dir }}/roles/mikrotik/backups/{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.txt"
+
+        Au lieu de  : /var/git/github/devnet/devicebackup/roles/mikrotik/backups/192.168.4.254_config.2023-01-10@00:12:44.txt
+
+
+--------------------------------
+
+# 10/01/2023
+
+
+
 ## À Faire: 
 
-    PlayBook MikroTik: 
-        
-    Lorsqu'on envoie la commande "/ip address print"
-    il y a le messaeg d'erreur : 
+PlayBook MikroTik: 
+    
+Lorsqu'on envoie la commande "/ip" address print"
+il y a le messaeg d'erreur : 
 
 
     fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}

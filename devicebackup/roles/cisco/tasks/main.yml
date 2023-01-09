@@ -19,6 +19,7 @@
 
 
 
+
 - name: Replaces device configuration of listed interfaces with provided configuration
   # cisco.ios.ios_interfaces: Est un module de "cisco.ios.ios_config" permettant de configurer les interfaces de IOS
   # /!\ Il faut le nom de l'interface SANS le mot "Interface"
@@ -40,9 +41,6 @@
       # valn: 666
     state: replaced
 
-#
-
-
 
 
 
@@ -53,9 +51,11 @@
     # ça crée des fichiers text avec l'IP/FQDN et le Time-Stamp
     # Exemple: "sandbox-iosxe-latest-1.cisco.com_config.2023-01-04@23:18:23"
     backup: yes
-  register: backup_ios_location
+  register: output
 
-- debug: var=backup_ios_location
+- name: Backup current switch config (ios) output
+  debug:
+    msg: "{{ output.backup_path }}"
 
 
 

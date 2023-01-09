@@ -2,9 +2,9 @@
 # ansible-playbook -i hosts test.yml 
 # https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_command_module.html
 - name: ansible-cisco
-  hosts: sandbox-iosxe #all
+  hosts: sandbox-iosxe
   # become: yes
-  gather_facts: no
+  gather_facts: yes
 #
 
   # vars:

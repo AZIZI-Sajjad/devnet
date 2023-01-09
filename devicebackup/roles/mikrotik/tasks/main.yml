@@ -17,7 +17,10 @@
 # 2- Modifier le ficiher devicebackup/hosts et y ajouter les IP / FQDN et les identifiants des équipements
 # 3- Aller en SSH dans le dossier devicebackup
 # 4- Lancer la commande suivante :
-# ansible-playbook -i hosts-cisco test.yml
+# ansible-playbook -i hosts-cisco ansible-miktorik.yml
+
+
+
 
 - name: system resource print MikroTik
   community.routeros.command:
@@ -63,7 +66,7 @@
 
 
 
-- name: export on MikroTik
+- name: Execute export command on MikroTik
   community.routeros.command:
     commands:
       - export
@@ -72,11 +75,75 @@
       # - export file=myconfig.cfg
   register: output
 
-- name: export MikroTik output
+- name: Execute export command on MikroTik output
   debug:
     msg: "{{ output }}"
 
+- name: Save MikroTikMikroTik at a file
+  copy:
+    content: "{{ output.stdout_lines }}"
+    dest: "{{ playbook_dir }}/roles/mikrotik/backups/{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.txt"
+    # ansible_date_time.date
+    # ansible_date_time.timr
+    # iso8601
+  register: output
 
+- name: Save MikroTik at a file output
+  debug:
+    msg:  "New Backup File Location = {{ output.dest }}"
+
+
+
+
+
+########################  Brouillons: 
+# - name: Print output ( Run a command on MikroTik )
+#   ansible.builtin.debug:
+#     var: system_resource_print.stdout_lines
+
+
+
+# - name: Show variable inventory_hostname output
+#   debug:
+#     msg: IP ADRESS IS -> {{ inventory_hostname }}
+
+
+
+
+# - name: save configuration to file
+#   copy:
+#     content: "{{ config.config }}"
+#     dest: /path/to/config.txt
+
+
+
+# - name: Write the export output to a file
+#   lineinfile:
+#     create: true
+#     path: ./roles/mikrotik/backups/config2.txt
+#     line: "{{ item }}"
+#   loop: "{{ output.stdout_lines }}"
+
+
+
+
+# - name: export on MikroTik
+#   community.routeros.command:
+#     commands:
+#       - export
+#       # - export
+#       # - /export file=myconfig.cfg
+#       # - export file=myconfig.cfg
+#   register: output
+
+# - name: export MikroTik output
+#   debug:
+#     msg: "{{ output }}"
+
+# - name: Enregistrement de la configuration de MikroTik dans un fichier
+#   copy:
+#     content: "{{ output.stdout_lines }}"
+#     dest: ./roles/mikrotik/backups/config.txt
 
 
 # - name: ip address print on MikroTik
@@ -90,16 +157,3 @@
 #   debug:
 #     msg: "{{ output }}"
 
-
-
-
-########################  Brouillons: 
-# - name: Print output ( Run a command on MikroTik )
-#   ansible.builtin.debug:
-#     var: system_resource_print.stdout_lines
-
-
-# - name: save configuration to file
-#   copy:
-#     content: "{{ config.config }}"
-#     dest: /path/to/config.txt
