@@ -237,6 +237,6 @@ PlayBook MikroTik:
     fatal: [192.168.4.254]: FAILED! => {"changed": false, "msg": "command timeout triggered, timeout value is 30 secs.\nSee the timeout setting options in the Network Debug and Troubleshooting Guide."}
 
 ## 2- Lorsqu'on sauvegarde MikroTik le résltat est en format brut, c'est à dire sans ENTREE avec des "\\n"  
-
+        Réf: https://www.cloudbees.com/blog/ansible-lineinfile-9-ways-to-use-it-to-improve-your-playbooks
 
 ## 3- Cacher les identifiants de MikroTik 
