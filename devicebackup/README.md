@@ -258,3 +258,14 @@ PlayBook MikroTik:
 ### 10- Comparer la config actulle '{Dernière sauvegarde}' avec les anciennes
 
 
+--------------------------
+
+
+
+# 12/01/2023 
+
+## Trouver un repository pfsense sur Github
+
+        Réf: https://github.com/5h0ckw4v3/pfSense_Playbook.git
+
+

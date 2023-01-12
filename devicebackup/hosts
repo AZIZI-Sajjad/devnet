@@ -14,14 +14,19 @@ host_key_checking=False
 
 
 [mikrotik]
-192.168.4.254
+192.168.1.253
+; 192.168.2.254
+; 192.168.3.254
+; 192.168.4.254
+; 192.168.5.254
+; 192.168.7.254
 
 [mikrotik:vars]
 ansible_connection=ansible.netcommon.network_cli
 ansible_network_os=community.routeros.routeros
-ansible_user=admin
+ansible_user=sdmik
 ; ansible_user=admin+cet1024w
-ansible_ssh_pass=password
+ansible_ssh_pass=P@ssw0rdM!K31L001oo
 ansible_become=yes
 host_key_checking=False
 
