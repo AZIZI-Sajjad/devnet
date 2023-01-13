@@ -1,0 +1,12 @@
+---
+# ansible-playbook -i hosts test.yml 
+# https://docs.ansible.com/ansible/latest/collections/cisco/ios/ios_command_module.html
+- name: pfSense 2.4.4 Playbook
+  hosts: pfsense #all
+  # become: yes
+  gather_facts: yes
+#
+
+  roles:
+    - role: pfsense
+

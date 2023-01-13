@@ -78,11 +78,12 @@
 - name: Execute export command on MikroTik output
   debug:
     msg: "{{ output }}"
+  loop: 
 
 - name: Save MikroTikMikroTik at a file
   copy:
     content: "{{ output.stdout_lines }}"
-    dest: "{{ playbook_dir }}/roles/mikrotik/backups/{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.txt"
+    dest: "{{ playbook_dir }}/roles/mikrotik/backups/{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.cfg"
     # ansible_date_time.date
     # ansible_date_time.timr
     # iso8601
@@ -91,6 +92,161 @@
 - name: Save MikroTik at a file output
   debug:
     msg:  "New Backup File Location = {{ output.dest }}"
+
+
+
+- name: Backup Mikrotik via SSH 
+  command: sshpass -p "{{ ansible_ssh_pass }}" ssh -o StrictHostKeyChecking=no "{{ ansible_ssh_user }}"@"{{ inventory_hostname }}" "/export"
+  register: output
+
+
+- name: Save Backup Mikrotik via SSH at a file
+  copy:
+    content: "{{ output.stdout_lines }}"
+    dest: "{{ playbook_dir }}/roles/mikrotik/backups/TEST___{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.cfg"
+    # ansible_date_time.date
+    # ansible_date_time.timr
+    # iso8601
+  register: output
+
+
+
+# - name: Save MikroTik at a file output SSSSSSHHHHHHOOOWWWWWWWWW
+#   debug:
+#     msg:  " {{ output.dest }}"
+
+
+
+
+- name: Backup Mikrotik via SSH 222222222222222222222222222222222222
+  command: sshpass -p "{{ ansible_ssh_pass }}" ssh -o StrictHostKeyChecking=no "{{ ansible_ssh_user }}"@"{{ inventory_hostname }}" "/export"
+  register: output
+
+
+- name: SHHHHHOOOOW export via SSH
+  debug:
+    msg:  "{{ output }}"
+
+
+- name: SHHHHHOOOOW TYPE  -> export via SSH
+  debug:
+    msg:  "{{ output | type_debug }}"
+
+
+
+
+# - name: Create files for each list item
+#   file:
+#     path: "{{ playbook_dir }}/roles/mikrotik/backups/TEST___{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.cfg"
+#     state: touch
+#   # loop: "{{ output.stdout_lines }}"
+#   register: bkpfiledir
+
+# - name: SHHHHHOOOOW bkpfiledir
+#   debug:
+#     msg:  "{{ bkpfiledir }}"
+
+# - name: Write list item to file
+#   lineinfile:
+#     dest: "{{ playbook_dir }}/roles/mikrotik/backups/TEST___{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.cfg"
+#     line: "{{ output }}"
+#   loop: "{{ output.results }}"
+#   loop_control:
+#     loop_var: output
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# - name: Get Mikrotik configuration
+#   uri:
+#     url: "http://{{ inventory_hostname }}/export"
+#     method: GET
+#     return_content: yes
+#   register: mikrotik_config
+
+# - name: Save Mikrotik configuration to file
+#   template:
+#     src: "mikrotik_config.j2"
+#     dest: "mikrotik_config.txt"
+#   vars:
+#     config: "{{ mikrotik_config.content }}"
+
+
+
+
+
+
+
+- name: PAUSE
+  ansible.builtin.pause:
+    minutes: 5
+
+- name: Print items on separate lines
+  debug:
+    msg: "{{ item }}"
+  with_items: "{{ output.stdout_lines }}"
+
+
+
+- name: Write list item to file
+  lineinfile:
+    dest: "{{ playbook_dir }}/roles/mikrotik/backups/TEST_2__{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.cfg"
+    line: "{{ output }}"
+  loop: "{{ output.stdout_lines }}"
+  loop_control:
+    loop_var: output
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -113,14 +269,14 @@
 # - name: save configuration to file
 #   copy:
 #     content: "{{ config.config }}"
-#     dest: /path/to/config.txt
+#     dest: /path/to/config.cfg
 
 
 
 # - name: Write the export output to a file
 #   lineinfile:
 #     create: true
-#     path: ./roles/mikrotik/backups/config2.txt
+#     path: ./roles/mikrotik/backups/config2.cfg
 #     line: "{{ item }}"
 #   loop: "{{ output.stdout_lines }}"
 
@@ -143,7 +299,7 @@
 # - name: Enregistrement de la configuration de MikroTik dans un fichier
 #   copy:
 #     content: "{{ output.stdout_lines }}"
-#     dest: ./roles/mikrotik/backups/config.txt
+#     dest: ./roles/mikrotik/backups/config.cfg
 
 
 # - name: ip address print on MikroTik

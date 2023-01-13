@@ -24,14 +24,25 @@ host_key_checking=False
 [mikrotik:vars]
 ansible_connection=ansible.netcommon.network_cli
 ansible_network_os=community.routeros.routeros
-ansible_user=sdmik
+ansible_user=admin
 ; ansible_user=admin+cet1024w
-ansible_ssh_pass=P@ssw0rdM!K31L001oo
+ansible_ssh_pass=adminpass
 ansible_become=yes
 host_key_checking=False
 
+[pfsense]
+192.168.2.252
+; 192.168.1.[1:6]
 
-
+[pfsense:vars]
+ansible_ssh_port=22
+ansible_ssh_user=root #insert_your_user_here
+ansible_ssh_pass="rootpass" #insert_your_user_here
+ansible_become=yes
+ansible_become_method=sudo	
+ansible_connection=ssh
+ansible_python_interpreter=/usr/local/bin/python2.7
+ansible_shell_executable=/bin/sh
 
 
 ########################  Brouillons: 
