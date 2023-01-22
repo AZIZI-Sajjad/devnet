@@ -235,6 +235,15 @@ PlayBook MikroTik:
 ### 2- Lorsqu'on sauvegarde MikroTik le résltat est en format brut, c'est à dire sans ENTREE avec des "\\n"  
         Réf: https://www.cloudbees.com/blog/ansible-lineinfile-9-ways-to-use-it-to-improve-your-playbooks
 
+        ### Résolu : 
+            Avec le module "ansible.builtin.shell" on peut lancer une commande à distance
+            et après SSH via ">>" enregistrer le résultat dans un fichier : 
+            #### Réf: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
+            #### Exemple : 
+                ansible.builtin.shell: sshpass -p "{{ ansible_ssh_pass }}" ssh -o StrictHostKeyChecking=no "{{ ansible_ssh_user }}"@"{{ inventory_hostname }}" "/system resource print" >> "{{ playbook_dir }}/roles/mikrotik/backups/{{ inventory_hostname }}.system_resource.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.txt"
+
+
+
 ### 3- Cacher les identifiants de MikroTik 
 
 ### 4- Etant donné que le fichier de sauvegarde de MikroTik contient des MOT DE PASSE 

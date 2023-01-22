@@ -1,0 +1,19 @@
+                   uptime: 3w1d2h35m42s
+                  version: 6.49 (stable)
+               build-time: Oct/06/2021 11:55:34
+         factory-software: 6.29.1
+              free-memory: 26.0MiB
+             total-memory: 64.0MiB
+                      cpu: MIPS 24Kc V7.4
+                cpu-count: 1
+            cpu-frequency: 650MHz
+                 cpu-load: 98%
+           free-hdd-space: 2736.0KiB
+          total-hdd-space: 16.0MiB
+  write-sect-since-reboot: 287092
+         write-sect-total: 706788
+               bad-blocks: 0%
+        architecture-name: mipsbe
+               board-name: hAP
+                 platform: MikroTik
+
