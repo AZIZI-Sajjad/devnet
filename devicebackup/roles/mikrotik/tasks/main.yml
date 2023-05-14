@@ -105,18 +105,18 @@
     msg: "{{ output }}"
   loop: 
 
-- name: Save MikroTik at a file
-  copy:
-    content: "{{ output.stdout_lines }}"
-    dest: "{{ playbook_dir }}/roles/mikrotik/backups/{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.cfg"
-    # ansible_date_time.date
-    # ansible_date_time.timr
-    # iso8601
-  register: output
+# - name: Save MikroTik at a file
+#   copy:
+#     content: "{{ output.stdout_lines }}"
+#     dest: "{{ playbook_dir }}/roles/mikrotik/backups/{{ inventory_hostname }}_config.{{ ansible_date_time.date }}@{{ ansible_date_time.time }}.cfg"
+#     # ansible_date_time.date
+#     # ansible_date_time.timr
+#     # iso8601
+#   register: output
 
-- name: Save MikroTik at a file output
-  debug:
-    msg:  "New Backup File Location = {{ output.dest }}"
+# - name: Save MikroTik at a file output
+#   debug:
+#     msg:  "New Backup File Location = {{ output.dest }}"
 
 
 

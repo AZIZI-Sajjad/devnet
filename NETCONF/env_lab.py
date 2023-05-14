@@ -57,7 +57,7 @@ if ENVIRONMENT_IN_USE == "sandbox":
     # Values for the Always On IOS XE Sandbox
     IOS_XE_1 = {
         "host": "sandbox-iosxe-latest-1.cisco.com",
-        "username": "developer",
+        "username": "admin",
         "password": "C1sco12345",
         "netconf_port": 830,
         "restconf_port": 443,
